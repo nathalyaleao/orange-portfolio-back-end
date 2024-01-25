@@ -1,7 +1,7 @@
-import Project from "./projetc.js";
+import Project from "./src/models/projetc.js";
 import database from "./src/db.js";
 
-async function addUser(req, res) {
+async function addProject(req, res) {
     await database.sync();
 
     const novoProject = await Project.create({
@@ -16,4 +16,4 @@ async function addUser(req, res) {
     console.log(novoProject);
   }
   
-  export default { addUser };
+  export default { addProject };
