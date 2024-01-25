@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const database = require('./src/db');
+import Sequelize from "sequelize";
+import database from "./src/db.js";
 
 const Project = database.define('project',{
     id_project: {
@@ -38,3 +38,5 @@ const Project = database.define('project',{
     },
 }
 )
+
+export default Project; //exportar

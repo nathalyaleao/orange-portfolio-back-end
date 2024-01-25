@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  }
-  ,"type": "module"
+    "express": "^4.17.1",
+    "mysql2": "^3.8.0",
+    "sequelize": "^4.23.0"
+  },
+  "type": "module"
 }
