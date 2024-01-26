@@ -1,6 +1,6 @@
-import express from "express";
-import routes from "./routes.js";
-import db from "./src/db.js";
+const express = require('express');
+const routes = require('./routes.js');
+const db = require('./src/db.js');
 
 const app = express();
 
