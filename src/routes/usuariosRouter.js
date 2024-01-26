@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const UsuarioController = require('../controllers/UsuarioController.js');
+const usuario = require('../models/usuario.js');
 
 const usuarioController = new UsuarioController();
 const router = Router();
@@ -11,3 +12,4 @@ router.put('/usuarios/:id', (req, res) => usuarioController.atualiza(req, res));
 router.delete('/usuarios/:id', (req, res) => usuarioController.exclui(req, res));
 
 module.exports = router;
+
