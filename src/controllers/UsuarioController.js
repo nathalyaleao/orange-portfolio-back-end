@@ -1,15 +1,12 @@
+const Controller = require('./Controller.js');
+const UsuarioServices = require('../services/UsuarioServices.js');
+const usuarioServices = new UsuarioServices();
 
-const database = require('../models');
-class UsuarioController {
-    static async listarUsuarios(req, res) {
-        try {
-            const listaDeUsuarios = await database.Usuario.findAll();
-            return res.status(200).json(listaDeUsuarios)
-
-        } catch (erro) {
-
-        }
+class UsuarioController extends Controller {
+    constructor() {
+        super(usuarioServices);
     }
+
 }
 
 module.exports = UsuarioController
