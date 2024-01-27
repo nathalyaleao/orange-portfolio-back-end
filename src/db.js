@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Sequelize } = require("sequelize") // importar o sequelize
 
 const sequelize = new Sequelize("squad16", "root", "Nml081100!", {
   //passar os dados para o sequelize
