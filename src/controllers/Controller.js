@@ -46,6 +46,7 @@ class Controller {
         const dadosAtualizados = req.body;
         try {
             //isUpdated
+            delete dadosAtualizados.email
             const foiAtualizado = await this.entidadeService.atualizaRegistro(dadosAtualizados, Number(id));
             if (!foiAtualizado) {
                 return res.status(400).json({ mensagem: 'registro não foi atualizado' });
