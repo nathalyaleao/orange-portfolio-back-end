@@ -14,7 +14,7 @@ const config = {
     redirectUrl: process.env.REDIRECT_URL,
     clientUrl: process.env.CLIENT_URL,
     tokenSecret: process.env.TOKEN_SECRET,
-    tokenExpiration: 86400,
+    tokenExpiration: 24 * 60 * 60 * 1000,
     postUrl: 'https://jsonplaceholder.typicode.com/posts'
   };
 
@@ -56,7 +56,7 @@ module.exports = {
 
             const token = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
-            res.cookie('token', token, { maxAge: config.tokenExpiration, httpOnly: true,  })
+            res.cookie('token', token, {path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
 
             res.json({ user})
 
@@ -76,7 +76,7 @@ module.exports = {
             const newToken = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
 
-            res.cookie('token', newToken, { maxAge: config.tokenExpiration, httpOnly: true,  })
+            res.cookie('token', newToken, {path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
 
             res.json({ logged: true, user });
         } catch(error) {
@@ -103,7 +103,7 @@ module.exports = {
             if(user) {
                 const token = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
-                res.cookie('token', token, { maxAge: config.tokenExpiration, httpOnly: true,  })
+                res.cookie('token', token, {path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
 
                 res.json({haveAnAccount: true, user})
             }
