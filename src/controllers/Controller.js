@@ -32,7 +32,9 @@ class Controller {
     }
 
     async criaNovo(req, res) {
+        //id
         const dadosParaCriacao = req.body;
+
         try {
             const novoRegistroCriado = await this.entidadeService.criaRegistro(dadosParaCriacao);
             return res.status(200).json(novoRegistroCriado);
@@ -56,6 +58,7 @@ class Controller {
             return res.status(400).json({ erro: erro.message })
         }
     }
+    
     async exclui(req, res) {
         const { id } = req.params;
         try {
