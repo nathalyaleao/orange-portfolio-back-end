@@ -61,7 +61,7 @@ module.exports = {
             res.json({ user})
 
         } catch(error) {
-            res.status(500).send(`Erro interno do servidor.`)
+            res.status(500).json({message: 'Erro interno do servidor.', error})
         }
     },
 
@@ -80,7 +80,7 @@ module.exports = {
 
             res.json({ logged: true, user });
         } catch(error) {
-            res.status(500).send(`Erro interno do servidor!`)
+            res.status(500).json({message: 'Erro interno do servidor.', error})
         }
     },
 
@@ -112,7 +112,7 @@ module.exports = {
             } 
                 
         } catch(error) {
-            res.status(500).send(`Erro interno do servidor!`)
+            res.status(500).json({message: 'Erro interno do servidor.', error})
         }
     },
 
@@ -120,7 +120,7 @@ module.exports = {
         try {
             res.clearCookie('token').send('Logged out');
         } catch(error) {
-            res.status(500).send(`Erro interno do servidor!`)
+            res.status(500).json({message: 'Erro interno do servidor.', error})
         }
     },
 
@@ -132,7 +132,7 @@ module.exports = {
               });
 
         } catch(error) {
-            res.status(500).send(`Erro interno do servidor!`)
+            res.status(500).json({message: 'Erro interno do servidor.', error})
         }
 
     },
