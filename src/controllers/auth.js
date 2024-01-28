@@ -80,7 +80,6 @@ module.exports = {
 
             res.json({ logged: true, user });
         } catch(error) {
-            console.log(error)
             res.status(500).send(`Erro interno do servidor!`)
         }
     },
