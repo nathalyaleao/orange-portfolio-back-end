@@ -56,9 +56,9 @@ module.exports = {
 
             const token = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
-            res.cookie('token', token, {domain: config.clientUrl, maxAge: config.tokenExpiration, httpOnly: true,  sameSite: 'strict', secure: true})
+            res.cookie('token', token, {maxAge: config.tokenExpiration, httpOnly: true})
 
-            res.json({ user})
+            res.json({ user, token})
 
         } catch(error) {
             res.status(500).json({message: 'Erro interno do servidor.', error})
@@ -67,7 +67,9 @@ module.exports = {
 
     async logged(req, res){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.query.token;
+            
+            console.log(req.query)
 
             if (!token) return res.json({ logged: false });
 
@@ -76,9 +78,9 @@ module.exports = {
             const newToken = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
 
-            res.cookie('token', newToken, {domain: config.clientUrl, maxAge: config.tokenExpiration, httpOnly: true,  sameSite: 'strict', secure: true})
+            res.cookie('token', newToken, {maxAge: config.tokenExpiration, httpOnly: true})
 
-            res.json({ logged: true, user });
+            res.json({ logged: true, user, token });
         } catch(error) {
             res.status(500).json({message: 'Erro interno do servidor.', error})
         }
@@ -103,9 +105,9 @@ module.exports = {
             if(user) {
                 const token = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
-                res.cookie('token', token, {domain: config.clientUrl, maxAge: config.tokenExpiration, httpOnly: true,  sameSite: 'strict', secure: true })
+                res.cookie('token', token, {maxAge: config.tokenExpiration, httpOnly: true })
 
-                res.json({haveAnAccount: true, user})
+                res.json({haveAnAccount: true, user, token})
             }
             else {
                 res.json({haveAnAccount: false, user: {email, name, picture}})
