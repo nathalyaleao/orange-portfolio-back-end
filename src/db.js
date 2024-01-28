@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize") // importar o sequelize
-const mysql = require("mysql2")
+const mysql2 = require("mysql2")
 
 
 const DB_NAME = process.env.DB_NAME; 
