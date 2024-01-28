@@ -7,7 +7,6 @@ const auth = require('./authRouter.js');
 
 module.exports = app => {
     app.use(
-        express.json(),
         usuarios,
         projetos,
         auth,

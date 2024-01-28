@@ -22,7 +22,8 @@ class Controller {
     }
 
     async pegaTodosdeUmUsuario(req, res) {
-        const { id } = req.params;
+        const { id } = req.user;
+        console.log(id)
         try {
             const umUsuario = await this.entidadeService.pegaRegistrosPorUsuario(Number(id));
             return res.status(200).json(umUsuario);
