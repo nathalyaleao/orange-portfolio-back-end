@@ -56,7 +56,7 @@ module.exports = {
 
             const token = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
-            res.cookie('token', token, {Domain: config.clientUrl, path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
+            res.cookie('token', token, {domain: config.clientUrl, path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
 
             res.json({ user})
 
@@ -76,7 +76,7 @@ module.exports = {
             const newToken = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
 
-            res.cookie('token', newToken, {Domain: config.clientUrl, path: "/",  maxAge: config.tokenExpiration, httpOnly: true,  })
+            res.cookie('token', newToken, {domain: config.clientUrl, path: "/",  maxAge: config.tokenExpiration, httpOnly: true,  })
 
             res.json({ logged: true, user });
         } catch(error) {
@@ -103,7 +103,7 @@ module.exports = {
             if(user) {
                 const token = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
-                res.cookie('token', token, {Domain: config.clientUrl, path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
+                res.cookie('token', token, {domain: config.clientUrl, path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
 
                 res.json({haveAnAccount: true, user})
             }
