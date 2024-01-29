@@ -56,9 +56,9 @@ module.exports = {
 
             const token = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
-            res.cookie('token', token, {domain: config.clientUrl, path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
+            res.cookie('token', token, {maxAge: config.tokenExpiration, httpOnly: true})
 
-            res.json({ user})
+            res.json({ user, token})
 
         } catch(error) {
             res.status(500).json({message: 'Erro interno do servidor.', error})
@@ -67,7 +67,9 @@ module.exports = {
 
     async logged(req, res){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.query.token;
+            
+            console.log(req.query)
 
             if (!token) return res.json({ logged: false });
 
@@ -76,9 +78,9 @@ module.exports = {
             const newToken = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
 
-            res.cookie('token', newToken, {domain: config.clientUrl, path: "/",  maxAge: config.tokenExpiration, httpOnly: true,  })
+            res.cookie('token', newToken, {maxAge: config.tokenExpiration, httpOnly: true})
 
-            res.json({ logged: true, user });
+            res.json({ logged: true, user, token });
         } catch(error) {
             res.status(500).json({message: 'Erro interno do servidor.', error})
         }
@@ -93,8 +95,10 @@ module.exports = {
             const { data: { id_token} } = await axios.post(`${config.tokenUrl}?${tokenParam}`);
             if (!id_token) return res.status(400).json({ message: 'Auth error' });
 
+            console.log(jwt.decode(id_token))
+
             
-            const { email, name, picture } = jwt.decode(id_token);
+            const { email, given_name, family_name, picture } = jwt.decode(id_token);
 
             const user = await dataSource['Usuario'].findOne({ 
                 attributes: ['id', 'nome', 'sobrenome', 'url_avatar'],
@@ -103,12 +107,12 @@ module.exports = {
             if(user) {
                 const token = jwt.sign({ user }, config.tokenSecret, { expiresIn: config.tokenExpiration });
 
-                res.cookie('token', token, {domain: config.clientUrl, path: "/", maxAge: config.tokenExpiration, httpOnly: true,  })
+                res.cookie('token', token, {maxAge: config.tokenExpiration, httpOnly: true })
 
-                res.json({haveAnAccount: true, user})
+                res.json({haveAnAccount: true, user, token})
             }
             else {
-                res.json({haveAnAccount: false, user: {email, name, picture}})
+                res.json({haveAnAccount: false, user: {email, given_name, family_name, picture}})
             } 
                 
         } catch(error) {
