@@ -95,8 +95,10 @@ module.exports = {
             const { data: { id_token} } = await axios.post(`${config.tokenUrl}?${tokenParam}`);
             if (!id_token) return res.status(400).json({ message: 'Auth error' });
 
+            console.log(jwt.decode(id_token))
+
             
-            const { email, name, picture } = jwt.decode(id_token);
+            const { email, given_name, family_name, picture } = jwt.decode(id_token);
 
             const user = await dataSource['Usuario'].findOne({ 
                 attributes: ['id', 'nome', 'sobrenome', 'url_avatar'],
@@ -110,7 +112,7 @@ module.exports = {
                 res.json({haveAnAccount: true, user, token})
             }
             else {
-                res.json({haveAnAccount: false, user: {email, name, picture}})
+                res.json({haveAnAccount: false, user: {email, given_name, family_name, picture}})
             } 
                 
         } catch(error) {
