@@ -8,13 +8,7 @@ class UsuarioController extends Controller {
     }
 
     async criaNovo(req, res) {
-        //id
-        const dadosParaCriacao = req.body;
-
-        const user_id = 1
-
-        dadosParaCriacao = {dadosParaCriacao, user_id}
-
+        let dadosParaCriacao = req.body;
         try {
             const novoRegistroCriado = await this.entidadeService.criaRegistro(dadosParaCriacao);
             return res.status(200).json(novoRegistroCriado);
