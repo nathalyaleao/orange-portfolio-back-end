@@ -47,9 +47,9 @@ module.exports = {
                 where: { email:  req.body.email} });
             
 
-            if(!user) return res.status(403).send(`E-mail ou senha invalido.`)
+            if(!user) return res.status(403).json({message: 'E-mail ou senha invalido.'})
             
-            if(user.senha !== req.body.password) return res.status(403).send(`E-mail ou senha invalido.`)
+            if(user.senha !== req.body.password) return res.status(403).json({message: 'E-mail ou senha invalido.'})
             
 
             delete user.dataValues.senha;
@@ -58,7 +58,7 @@ module.exports = {
 
             res.cookie('token', token, {maxAge: config.tokenExpiration, httpOnly: true})
 
-            res.json({ user, token})
+            res.json({ user, token, message: 'Login realizado com sucesso.'})
 
         } catch(error) {
             res.status(500).json({message: 'Erro interno do servidor.', error})
@@ -69,9 +69,7 @@ module.exports = {
         try {
             const token = req.cookies.token || req.query.token;
             
-            console.log(req.query)
-
-            if (!token) return res.json({ logged: false });
+            if (!token) return res.json({ logged: false, message: 'Usuário não logado.' });
 
 
             const { user } = jwt.verify(token, config.tokenSecret);
@@ -80,7 +78,7 @@ module.exports = {
 
             res.cookie('token', newToken, {maxAge: config.tokenExpiration, httpOnly: true})
 
-            res.json({ logged: true, user, token });
+            res.json({ logged: true, user, token, message: 'Usuário logado.' });
         } catch(error) {
             res.status(500).json({message: 'Erro interno do servidor.', error})
         }
@@ -94,8 +92,6 @@ module.exports = {
 
             const { data: { id_token} } = await axios.post(`${config.tokenUrl}?${tokenParam}`);
             if (!id_token) return res.status(400).json({ message: 'Auth error' });
-
-            console.log(jwt.decode(id_token))
 
             
             const { email, given_name, family_name, picture } = jwt.decode(id_token);
@@ -122,7 +118,7 @@ module.exports = {
 
     async logout(req, res) {
         try {
-            res.clearCookie('token').send('Logged out');
+            res.clearCookie('token').json({ message: 'Logged out' });
         } catch(error) {
             res.status(500).json({message: 'Erro interno do servidor.', error})
         }

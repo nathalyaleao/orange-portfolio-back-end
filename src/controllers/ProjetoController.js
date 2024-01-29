@@ -6,7 +6,7 @@ class ProjetoController extends Controller {
     constructor() {
         super(projetoServices);
     }
-    }
+}
 
 
 module.exports = ProjetoController
