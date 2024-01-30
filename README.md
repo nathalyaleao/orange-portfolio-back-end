@@ -82,7 +82,7 @@ Inicie o servidor
 
 ## Documento para testar as rotas
 É necessário ter o postman instalado: - [Postman](https://www.postman.com/downloads/) 
-Após instlar o postman é necessário importar o arquivo [Documento da api](https://github.com/nathalyaleao/orange-portifolio-back-end/blob/main/src/docs/API%20documentation.postman_collection.json)
+Após instalar o postman é necessário importar o arquivo [Documento da api](https://github.com/nathalyaleao/orange-portifolio-back-end/blob/main/src/docs/API%20documentation.postman_collection.json)
 Para autenticar com o usuário base:
 - email: solange@gmail.com
 - senha: senha123
