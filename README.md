@@ -72,6 +72,10 @@ Inicie o servidor
 ```bash
   npm run dev
 ```
+## Para Logar:
+email: solange@gmail.com
+senha: senha1234
+
 ## Funcionalidades
 
 - Login
