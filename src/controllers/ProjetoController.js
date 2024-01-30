@@ -8,5 +8,4 @@ class ProjetoController extends Controller {
     }
 }
 
-
 module.exports = ProjetoController
