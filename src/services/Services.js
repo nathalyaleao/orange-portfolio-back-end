@@ -16,7 +16,8 @@ class Services {
         return dataSource[this.model].findAll({
             where: {
                 user_id: id,
-            }});
+            }
+        });
     }
 
     async criaRegistro(dadosDoRegistro) {
