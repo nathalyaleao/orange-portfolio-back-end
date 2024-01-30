@@ -7,4 +7,5 @@ class ProjetoController extends Controller {
         super(projetoServices);
     }
 }
+
 module.exports = ProjetoController
