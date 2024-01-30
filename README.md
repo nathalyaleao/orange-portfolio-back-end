@@ -87,12 +87,6 @@ Para autenticar com o usuário base:
 - email: solange@gmail.com
 - senha: senha123
 
-- Login
-- Crud de Usuário
-- Crud de Projeto
-![](https://raw.githubusercontent.com/nathalyaleao/orange-portifolio-back-end/main/src/docs/modelagem.png)
-
-
 
 ## Stack utilizada
 
