@@ -72,12 +72,20 @@ Inicie o servidor
 ```bash
   npm run dev
 ```
+
 ## Funcionalidades
 
 - Login
 - Crud de Usuário
 - Crud de Projeto
 ![](https://raw.githubusercontent.com/nathalyaleao/orange-portifolio-back-end/main/src/docs/modelagem.png)
+
+## Documento para testar as rotas
+É necessário ter o postman instalado: - [Postman](https://www.postman.com/downloads/) 
+Após instalar importe o arquivo [Documento da api](https://github.com/nathalyaleao/orange-portifolio-back-end/blob/main/src/docs/API%20documentation.postman_collection.json)
+Para autenticar com o usuário base:
+- email: solange@gmail.com
+- senha: senha123
 
 
 ## Stack utilizada
