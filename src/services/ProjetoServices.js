@@ -20,5 +20,24 @@ class ProjetoServices extends Services {
           });
     }
 
+
+    async pegaTodosOsRegistros(id) {
+      return dataSource[this.model].findAll({
+          raw: true,
+          include: [{
+            model: dataSource['Usuario'],
+            required: true,
+            attributes: ['nome', 'sobrenome']
+          }],
+          order: [['updatedAt', 'DESC' ]]
+        });
+  }
+
+
+
+
+
+
+
 }
 module.exports = ProjetoServices;
