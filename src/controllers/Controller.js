@@ -26,7 +26,9 @@ class Controller {
         const { id } = req.user;
         
         try {
+            console.log('oi')
             const umUsuario = await this.entidadeService.pegaRegistrosPorUsuario(Number(id));
+
             return res.status(200).json(umUsuario);
         } catch (erro) {
             return res.status(400).json({ erro: erro.message })

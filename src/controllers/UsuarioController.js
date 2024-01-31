@@ -7,6 +7,9 @@ class UsuarioController extends Controller {
         super(usuarioServices);
     }
 
+
+    
+
 }
 
 module.exports = UsuarioController
