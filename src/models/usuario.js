@@ -76,6 +76,9 @@ module.exports = (sequelize, DataTypes) => {
           args: [6, 30],
           msg: 'o campo senha deve ter no mínimo 6 caracteres'
         },
+      },
+      get() {
+        return undefined;
       }
     },
     url_avatar: DataTypes.STRING

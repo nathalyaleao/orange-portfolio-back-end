@@ -12,6 +12,17 @@ class Services {
         return dataSource[this.model].findByPk(id);
     }
 
+<<<<<<< HEAD
+=======
+    async pegaRegistrosPorUsuario(id) {
+        return dataSource[this.model].findAll({
+            where: {
+                user_id: id,
+            }
+        });
+    }
+
+>>>>>>> refs/remotes/origin/main
     async criaRegistro(dadosDoRegistro) {
         return dataSource[this.model].create(dadosDoRegistro);
     }

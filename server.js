@@ -18,6 +18,8 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static('src'));
+app.use('/upload', express.static('images'));
 app.use(cors(corsOptions));
 routes(app);
 app.use((req, res, next) => {
