@@ -7,7 +7,7 @@ module.exports = (multer ({
         },
         filename: (req, file, cb) => {
             const nomeImagem = Date.now().toString() + "_" + file.originalname;
-            req.body.arquivo = __dirname + "/upload/" + nomeImagem;
+            req.body.arquivo = "/upload/" + nomeImagem;
             cb(null, nomeImagem)
         }
     }),
