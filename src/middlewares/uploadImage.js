@@ -7,11 +7,12 @@ module.exports = (multer ({
         },
         filename: (req, file, cb) => {
             const nomeImagem = Date.now().toString() + "_" + file.originalname;
-            req.body.arquivo = __dirname + "/upload/" + nomeImagem;
+            req.body.arquivo = "/upload/" + nomeImagem;
             cb(null, nomeImagem)
         }
     }),
     fileFilter: (req, file, cb) => {
+
         const extensaoImg = ['image/png', 'image/jpg', 'image/jpeg'].find(formatoAceito => formatoAceito == file.mimetype);
 
         if(extensaoImg) {
