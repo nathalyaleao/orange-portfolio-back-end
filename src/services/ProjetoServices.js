@@ -1,5 +1,7 @@
 const Services = require('./Services.js')
+const Sequelize = require("sequelize");
 const dataSource = require('../models');
+const Op = Sequelize.Op;
 class ProjetoServices extends Services {
     constructor() {
         super('Projeto');
@@ -19,6 +21,15 @@ class ProjetoServices extends Services {
             order: [['updatedAt', 'DESC' ]]
           });
     }
+
+    async pegaRegistrosPorTags(tag) {
+      return dataSource[this.model].findAll({
+          where: {
+            tags: { [Op.like]: `%${tag}%` },
+          },
+          order: [['updatedAt', 'DESC' ]]
+        });
+  }
 
 }
 module.exports = ProjetoServices;

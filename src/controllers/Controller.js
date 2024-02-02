@@ -34,6 +34,18 @@ class Controller {
         }
     }
 
+    async pegaRegistrosPorTags(req, res) {        
+        const  tag  = req.body.tag;
+        
+        try {
+            const umUsuario = await this.entidadeService.pegaRegistrosPorTags(tag);
+
+            return res.status(200).json(umUsuario);
+        } catch (erro) {
+            return res.status(400).json({ erro: erro.message })
+        }
+    }
+
     async criaNovo(req, res) {
         //id
         const dadosParaCriacao = req.body;
