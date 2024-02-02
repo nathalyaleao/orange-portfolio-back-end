@@ -1,5 +1,9 @@
+
+const bcrypt = require('bcrypt')
+
 'use strict';
 const {
+
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
@@ -85,5 +89,11 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Usuario',
     tableName: 'usuarios'
   });
+
+  Usuario.beforeCreate(async (usuario) => {
+    const saltRounds = 10;
+    usuario.senha = await bcrypt.hash(usuario.senha, saltRounds);
+  });
+
   return Usuario;
 };
