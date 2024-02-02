@@ -15,7 +15,8 @@ class ProjetoController extends Controller {
         
         try {
             const novoRegistroCriado = await this.entidadeService.criaRegistro(dadosParaCriacao);
-            return res.status(200).json(novoRegistroCriado);
+            const project = await this.entidadeService.pegaProjetoWithUsuario(novoRegistroCriado.id)
+            return res.status(200).json(project);
         } catch (erro) {
             console.log(erro.message)
             
