@@ -10,7 +10,7 @@ router.get('/projetos/user', session.onlyUsers, (req, res) => projetoController.
 router.get('/projetos/tags/', session.onlyUsers, (req, res) => projetoController.pegaRegistrosPorTags(req, res)); // Pega de usuario
 router.get('/projetos/:id', session.onlyUsers, (req, res) => projetoController.pegaUmPorId(req, res));
 router.post('/projetos', session.onlyUsers, uploadImage.single("arquivo"), (req, res) => projetoController.criaNovo(req, res));
-router.put('/projetos/:id', session.onlyUsers, (req, res) => projetoController.atualiza(req, res));
+router.put('/projetos/:id', session.onlyUsers, uploadImage.single("arquivo"), (req, res) => projetoController.atualiza(req, res));
 router.delete('/projetos/:id', session.onlyUsers, (req, res) => projetoController.exclui(req, res));
 
 module.exports = router;
