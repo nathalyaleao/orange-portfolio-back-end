@@ -3,11 +3,11 @@ const multer = require('multer');
 module.exports = (multer ({
     storage: multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, './src/upload')
+            cb(null, './public')
         },
         filename: (req, file, cb) => {
             const nomeImagem = Date.now().toString() + "_" + file.originalname;
-            req.body.arquivo = "/upload/" + nomeImagem;
+            req.body.arquivo = "/" + nomeImagem;
             cb(null, nomeImagem)
         }
     }),
