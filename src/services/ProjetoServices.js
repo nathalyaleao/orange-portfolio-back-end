@@ -38,6 +38,17 @@ class ProjetoServices extends Services {
           });
     }
 
+    async pegaTodosOsRegistros() {
+      return dataSource[this.model].findAll({
+          raw: true,
+          include: [{
+            model: dataSource['Usuario'],
+            required: true,
+            attributes: ['nome', 'sobrenome', 'url_avatar']
+          }],
+          order: [['updatedAt', 'DESC' ]]
+        });
+  }
 
     async pegaRegistrosPorTags(tag) {
       return dataSource[this.model].findAll({
