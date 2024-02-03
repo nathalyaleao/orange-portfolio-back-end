@@ -7,13 +7,29 @@ class ProjetoServices extends Services {
         super('Projeto');
     }
     
+    async pegaProjetoWithUsuario(id) {
+      return dataSource[this.model].findOne({
+          raw: true,
+          include: [{
+            model: dataSource['Usuario'],
+            required: true,
+            attributes: ['nome', 'sobrenome', 'url_avatar']
+          }],
+          where: {
+            id: id,
+          },
+          order: [['updatedAt', 'DESC' ]]
+        });
+  }
+
+    
     async pegaRegistrosPorUsuario(id) {
         return dataSource[this.model].findAll({
             raw: true,
             include: [{
               model: dataSource['Usuario'],
               required: true,
-              attributes: ['nome', 'sobrenome']
+              attributes: ['nome', 'sobrenome', 'url_avatar']
             }],
             where: {
               user_id: id,
@@ -21,6 +37,7 @@ class ProjetoServices extends Services {
             order: [['updatedAt', 'DESC' ]]
           });
     }
+
 
     async pegaRegistrosPorTags(tag) {
       return dataSource[this.model].findAll({
