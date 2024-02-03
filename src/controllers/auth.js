@@ -43,7 +43,7 @@ module.exports = {
         try {
 
             const user = await dataSource['Usuario'].findOne({ 
-                attributes: ['id', 'nome', 'sobrenome', 'url_avatar', 'senha'],
+                attributes: ['id', 'nome', 'sobrenome', 'url_avatar', 'senha', 'email'],
                 where: { email:  req.body.email} });
             
 
@@ -97,7 +97,7 @@ module.exports = {
             const { email, given_name, family_name, picture } = jwt.decode(id_token);
 
             const user = await dataSource['Usuario'].findOne({ 
-                attributes: ['id', 'nome', 'sobrenome', 'url_avatar'],
+                attributes: ['id', 'nome', 'sobrenome', 'url_avatar', 'email'],
                 where: { email } });
 
             if(user) {
