@@ -76,7 +76,7 @@ Inicie o servidor
 ## Funcionalidades
 
 - Login
-- Crud de Usuário
+- Cadastro de Usuário
 - Crud de Projeto
 ![](https://raw.githubusercontent.com/nathalyaleao/orange-portifolio-back-end/main/src/docs/modelagem.png)
 
