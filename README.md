@@ -1,4 +1,3 @@
-
 # Desafio backend Orange Juice- Squad 16
 
 
@@ -36,24 +35,25 @@ Entre no diretório do projeto
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis no seu ambiente. Crie uma cópia do arquivo ```.env.example``` e renomei para o ```.env``` com as informações da sua conexão myql.
 
 ```bash
-#SERVER
-TOKEN_SECRET=Qwerty
-PORT=
+# SERVER
+TOKEN_SECRET=Qwerty     # Qualquer string aleatória.
+PORT=                   # Porta em que a API será executada.
 
-#DB
-DB_NAME=squad16
-DB_USER=root
-DB_HOST=localhost
-DB_PASSWORD=root
-DB_PORT=3306
+# DB
+DB_NAME=squad16         # Nome do banco de dados.
+DB_USER=root            # Usuário do banco de dados.
+DB_HOST=localhost       # Endereço do banco de dados.
+DB_PASSWORD=root        # Senha do banco de dados.
+DB_PORT=3306            # Porta do banco de dados.
 
 # FRONT-END
-REDIRECT_URL=
-CLIENT_URL=
+REDIRECT_URL=           # Endereço para login pelo Google no front-end, algo como ${host}/auth/callback
+CLIENT_URL=             # Endereço do front-end
 
 # Google
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
+GOOGLE_CLIENT_ID=       # Google Client ID
+GOOGLE_CLIENT_SECRET=   # Google Client Secret
+
 
 ```
 
