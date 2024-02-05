@@ -1,6 +1,6 @@
 # Desafio backend Orange Juice- Squad 16
-
-
+## Pre-Requesito
+- [Google OAuth 2.0](https://clerk.com/blog/oauth2-react-user-authorization?utm_source=www.google.com&utm_medium=referral&utm_campaign=none)
 
 ## Instalação
 Para execucação da api é necessário ter o node >= v16.17.1 e o banco de dados MySql
